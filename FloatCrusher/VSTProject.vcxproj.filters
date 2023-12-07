@@ -21,13 +21,13 @@
     <ClCompile Include="FloatCrusherProc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="audioeffect.cpp">
+    <ClCompile Include="vst2\audioeffect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="audioeffectx.cpp">
+    <ClCompile Include="vst2\audioeffectx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="vstplugmain.cpp">
+    <ClCompile Include="vst2\vstplugmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,22 +35,22 @@
     <ClInclude Include="FloatCrusher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="aeffect.h">
+    <ClInclude Include="vst2\aeffect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="aeffectx.h">
+    <ClInclude Include="vst2\aeffectx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vstfxstore.h">
+    <ClInclude Include="vst2\aeffeditor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="aeffeditor.h">
+    <ClInclude Include="vst2\audioeffect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="audioeffect.h">
+    <ClInclude Include="vst2\audioeffectx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="audioeffectx.h">
+    <ClInclude Include="vst2\vstfxstore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

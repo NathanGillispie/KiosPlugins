@@ -1,5 +1,5 @@
 ## Addition to the default VS gitignore:
-## Steinberg bullshit
+## Steinberg bullshit and plugins I don't want to commit yet
 
 aeffect.h
 aeffectx.h
@@ -10,6 +10,8 @@ audioeffectx.cpp
 audioeffectx.h
 vstplugmain.cpp
 vstfxstore.h
+
+TutorialPlugin
 
 
 ## Ignore Visual Studio temporary files, build results, and

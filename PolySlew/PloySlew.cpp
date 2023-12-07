@@ -21,7 +21,7 @@ PolySlew::PolySlew(audioMasterCallback audioMaster) :
 	sR3 = 0;
 
 	Algorithm = 0; //Definitely fucks stuff up, not sure what else to say here
-	numAlgorithm = 3;
+	numAlgorithm = 4;
 
 	_canDo.insert("plugAsChannelInsert"); // plug-in can be used as a channel insert effect.
 	_canDo.insert("plugAsSend"); // plug-in can be used as a send effect.

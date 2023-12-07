@@ -9,7 +9,7 @@ void PolySlew::processReplacing(float** inputs, float** outputs, VstInt32 sample
 	float* out1 = outputs[0];
 	float* out2 = outputs[1];
 
-	float delta = 1e-10;
+	float delta = 1e-20;
 
 	float limit = powf(A,2) * 2.0;
 	float slew = powf(B,8) * 2.0;
@@ -66,7 +66,7 @@ void PolySlew::processReplacing(float** inputs, float** outputs, VstInt32 sample
 			else if (sR3 < -limit) sR3 = -limit;
 			break;
 
-		case 1:
+		case 1: //Inverted Polyslew
 			//Cubic limiting
 			if (aL3 > cube) sL3 = sL0 - 3 * sL1 + 3 * sL2 - 6 * cube;
 			else if (aL3 < -cube) sL3 = sL0 - 3 * sL1 + 3 * sL2 + 6 * cube;
@@ -96,12 +96,42 @@ void PolySlew::processReplacing(float** inputs, float** outputs, VstInt32 sample
 			else if (sR3 < -limit) sR3 = -1.0;
 			break;
 
+		case 2: //Reverse PolySlew
+			//Conventional limiting
+			if (sL3 > limit) sL3 = limit;
+			else if (sL3 < -limit) sL3 = -limit;
+
+			if (sR3 > limit) sR3 = limit;
+			else if (sR3 < -limit) sR3 = -limit;
+
+			//Slewing inputs
+			if (sL3 - sL2 > slew) sL3 = sL2 + slew;
+			else if (sL3 - sL2 < -slew) sL3 = sL2 - slew;
+
+			if (sR3 - sR2 > slew) sR3 = sR2 + slew;
+			else if (sR3 - sR2 < -slew) sR3 = sR2 - slew;
+
+			//Quadratic limiting
+			if (aL2 > quad) sL3 = -sL1 + 2 * sL2 + 2 * quad;
+			else if (aL2 < -quad) sL3 = -sL1 + 2 * sL2 - 2 * quad;
+
+			if (aR2 > quad) sR3 = -sR1 + 2 * sR2 + 2 * quad;
+			else if (aR2 < -quad) sR3 = -sR1 + 2 * sR2 - 2 * quad;
+
+			//Cubic limiting
+			if (aL3 > cube) sL3 = sL0 - 3 * sL1 + 3 * sL2 + 6 * cube;
+			else if (aL3 < -cube) sL3 = sL0 - 3 * sL1 + 3 * sL2 - 6 * cube;
+
+			if (aR3 > cube) sR3 = sR0 - 3 * sR1 + 3 * sR2 + 6 * cube;
+			else if (aR3 < -cube) sR3 = sR0 - 3 * sR1 + 3 * sR2 - 6 * cube;
+			break;
+
 		default: //100% dry
 			break;
 		}
 
-		*out1 = sL2;
-		*out2 = sR2;
+		*out1 = sL3;
+		*out2 = sR3;
 
 		in1++;
 		in2++;
@@ -205,12 +235,42 @@ void PolySlew::processDoubleReplacing(double** inputs, double** outputs, VstInt3
 			else if (sR3 < -limit) sR3 = -1.0;
 			break;
 
+		case 2: //Reverse PolySlew
+			//Conventional limiting
+			if (sL3 > limit) sL3 = limit;
+			else if (sL3 < -limit) sL3 = -limit;
+
+			if (sR3 > limit) sR3 = limit;
+			else if (sR3 < -limit) sR3 = -limit;
+
+			//Slewing inputs
+			if (sL3 - sL2 > slew) sL3 = sL2 + slew;
+			else if (sL3 - sL2 < -slew) sL3 = sL2 - slew;
+
+			if (sR3 - sR2 > slew) sR3 = sR2 + slew;
+			else if (sR3 - sR2 < -slew) sR3 = sR2 - slew;
+
+			//Quadratic limiting
+			if (aL2 > quad) sL3 = -sL1 + 2 * sL2 + 2 * quad;
+			else if (aL2 < -quad) sL3 = -sL1 + 2 * sL2 - 2 * quad;
+
+			if (aR2 > quad) sR3 = -sR1 + 2 * sR2 + 2 * quad;
+			else if (aR2 < -quad) sR3 = -sR1 + 2 * sR2 - 2 * quad;
+
+			//Cubic limiting
+			if (aL3 > cube) sL3 = sL0 - 3 * sL1 + 3 * sL2 + 6 * cube;
+			else if (aL3 < -cube) sL3 = sL0 - 3 * sL1 + 3 * sL2 - 6 * cube;
+
+			if (aR3 > cube) sR3 = sR0 - 3 * sR1 + 3 * sR2 + 6 * cube;
+			else if (aR3 < -cube) sR3 = sR0 - 3 * sR1 + 3 * sR2 - 6 * cube;
+			break;
+
 		default: //100% dry
 			break;
 		}
 
-		*out1 = sL2;
-		*out2 = sR2;
+		*out1 = sL3;
+		*out2 = sR3;
 
 		in1++;
 		in2++;

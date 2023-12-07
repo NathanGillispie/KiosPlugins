@@ -19,20 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="audioeffect.cpp" />
-    <ClCompile Include="audioeffectx.cpp" />
     <ClCompile Include="FloatCrusher.cpp" />
     <ClCompile Include="FloatCrusherProc.cpp" />
-    <ClCompile Include="vstplugmain.cpp" />
+    <ClCompile Include="vst2\audioeffect.cpp" />
+    <ClCompile Include="vst2\audioeffectx.cpp" />
+    <ClCompile Include="vst2\vstplugmain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="aeffect.h" />
-    <ClInclude Include="aeffectx.h" />
-    <ClInclude Include="aeffeditor.h" />
-    <ClInclude Include="audioeffect.h" />
-    <ClInclude Include="audioeffectx.h" />
     <ClInclude Include="FloatCrusher.h" />
-    <ClInclude Include="vstfxstore.h" />
+    <ClInclude Include="vst2\aeffect.h" />
+    <ClInclude Include="vst2\aeffectx.h" />
+    <ClInclude Include="vst2\aeffeditor.h" />
+    <ClInclude Include="vst2\audioeffect.h" />
+    <ClInclude Include="vst2\audioeffectx.h" />
+    <ClInclude Include="vst2\vstfxstore.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{16F7AB3C-1AE0-4574-B60C-7B4DED82938C}</ProjectGuid>
@@ -166,7 +166,7 @@
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./vst2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>None</DebugInformationFormat>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <PreprocessorDefinitions>WINDOWS;_WINDOWS;WIN32;_USRDLL;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;VST_FORCE_DEPRECATED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
